@@ -1,0 +1,441 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6BC7B1C0-13F6-486C-A594-0EF5893AA09A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HospitalAPI</RootNamespace>
+    <AssemblyName>HospitalAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Uploads\about-us-2.jpg" />
+    <Content Include="Uploads\about-us.jpg" />
+    <Content Include="Uploads\appointment-left-bg.jpg" />
+    <Content Include="Uploads\bg.png" />
+    <Content Include="Uploads\blog\blog-1-large.jpg" />
+    <Content Include="Uploads\blog\blog-1-small.jpg" />
+    <Content Include="Uploads\client.jpg" />
+    <Content Include="Uploads\department\department-img1.jpg" />
+    <Content Include="Uploads\doctor.png" />
+    <Content Include="Uploads\doctors\1-large.jpg" />
+    <Content Include="Uploads\doctors\1.jpg" />
+    <Content Include="Uploads\doctors\2.jpg" />
+    <Content Include="Uploads\doctors\3.jpg" />
+    <Content Include="Uploads\doctors\4.jpg" />
+    <Content Include="Uploads\error.png" />
+    <Content Include="Uploads\favicon.png" />
+    <Content Include="Uploads\logo.png" />
+    <Content Include="Uploads\newsletter-bg.jpg" />
+    <Content Include="Uploads\news\1.jpg" />
+    <Content Include="Uploads\news\2.jpg" />
+    <Content Include="Uploads\news\3.jpg" />
+    <Content Include="Uploads\news\4.jpg" />
+    <Content Include="Uploads\news\5.jpg" />
+    <Content Include="Uploads\news\latest-post1.jpg" />
+    <Content Include="Uploads\news\latest-post2.jpg" />
+    <Content Include="Uploads\news\latest-post3.jpg" />
+    <Content Include="Uploads\patientAndAuthor\1.jpg" />
+    <Content Include="Uploads\patientAndAuthor\2.jpg" />
+    <Content Include="Uploads\patientAndAuthor\3.jpg" />
+    <Content Include="Uploads\patientAndAuthor\4.jpg" />
+    <Content Include="Uploads\patientAndAuthor\5.jpg" />
+    <Content Include="Uploads\services\1.jpg" />
+    <Content Include="Uploads\services\2.jpg" />
+    <Content Include="Uploads\services\3.jpg" />
+    <Content Include="Uploads\slider\1.jpg" />
+    <Content Include="Uploads\slider\2.jpg" />
+    <Content Include="Uploads\slider\3.jpg" />
+    <Content Include="Uploads\video-bg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AboutAdvantagesController.cs" />
+    <Compile Include="Controllers\AboutBodiesController.cs" />
+    <Compile Include="Controllers\AboutCardsController.cs" />
+    <Compile Include="Controllers\AboutIntroesController.cs" />
+    <Compile Include="Controllers\AuthorsController.cs" />
+    <Compile Include="Controllers\BlogsController.cs" />
+    <Compile Include="Controllers\CareCentersController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ContactInfoesController.cs" />
+    <Compile Include="Controllers\CountersController.cs" />
+    <Compile Include="Controllers\DepartmentCardsController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\DescCardsController.cs" />
+    <Compile Include="Controllers\DoctorsController.cs" />
+    <Compile Include="Controllers\EmailsController.cs" />
+    <Compile Include="Controllers\FeedbacksController.cs" />
+    <Compile Include="Controllers\NumbersController.cs" />
+    <Compile Include="Controllers\OpeningHoursController.cs" />
+    <Compile Include="Controllers\PhonesController.cs" />
+    <Compile Include="Controllers\PhoneViewsController.cs" />
+    <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\SlidersController.cs" />
+    <Compile Include="DAL\HospitalContext.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\GetExtension.cs" />
+    <Compile Include="Helpers\PhotoManager.cs" />
+    <Compile Include="Migrations\201903131716219_Init.cs" />
+    <Compile Include="Migrations\201903131716219_Init.Designer.cs">
+      <DependentUpon>201903131716219_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903131807008_CounterFixed.cs" />
+    <Compile Include="Migrations\201903131807008_CounterFixed.Designer.cs">
+      <DependentUpon>201903131807008_CounterFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903131818243_DepartmentIconFixed.cs" />
+    <Compile Include="Migrations\201903131818243_DepartmentIconFixed.Designer.cs">
+      <DependentUpon>201903131818243_DepartmentIconFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903132005469_FeedbacksAdded.cs" />
+    <Compile Include="Migrations\201903132005469_FeedbacksAdded.Designer.cs">
+      <DependentUpon>201903132005469_FeedbacksAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903132006246_FeedbackAdded.cs" />
+    <Compile Include="Migrations\201903132006246_FeedbackAdded.Designer.cs">
+      <DependentUpon>201903132006246_FeedbackAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903132008306_PhoneIconRemovedFromPhoneView.cs" />
+    <Compile Include="Migrations\201903132008306_PhoneIconRemovedFromPhoneView.Designer.cs">
+      <DependentUpon>201903132008306_PhoneIconRemovedFromPhoneView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903132013499_AuthorAdded.cs" />
+    <Compile Include="Migrations\201903132013499_AuthorAdded.Designer.cs">
+      <DependentUpon>201903132013499_AuthorAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903132017359_IconsFixed.cs" />
+    <Compile Include="Migrations\201903132017359_IconsFixed.Designer.cs">
+      <DependentUpon>201903132017359_IconsFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903132026423_IconRemovedFromContactInfo.cs" />
+    <Compile Include="Migrations\201903132026423_IconRemovedFromContactInfo.Designer.cs">
+      <DependentUpon>201903132026423_IconRemovedFromContactInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903132028553_EmailRemovedFromContactInfo.cs" />
+    <Compile Include="Migrations\201903132028553_EmailRemovedFromContactInfo.Designer.cs">
+      <DependentUpon>201903132028553_EmailRemovedFromContactInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903132043302_Department.cs" />
+    <Compile Include="Migrations\201903132043302_Department.Designer.cs">
+      <DependentUpon>201903132043302_Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903132054371_SlugsAdded.cs" />
+    <Compile Include="Migrations\201903132054371_SlugsAdded.Designer.cs">
+      <DependentUpon>201903132054371_SlugsAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903140656203_PhotoFixedInBlog.cs" />
+    <Compile Include="Migrations\201903140656203_PhotoFixedInBlog.Designer.cs">
+      <DependentUpon>201903140656203_PhotoFixedInBlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903141713130_PhotoUnrequiredInSlider.cs" />
+    <Compile Include="Migrations\201903141713130_PhotoUnrequiredInSlider.Designer.cs">
+      <DependentUpon>201903141713130_PhotoUnrequiredInSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903160628369_PhotosAndIconsFixed.cs" />
+    <Compile Include="Migrations\201903160628369_PhotosAndIconsFixed.Designer.cs">
+      <DependentUpon>201903160628369_PhotosAndIconsFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903161845270_LengthFixed.cs" />
+    <Compile Include="Migrations\201903161845270_LengthFixed.Designer.cs">
+      <DependentUpon>201903161845270_LengthFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903170650327_PhoneAndMailSeparated.cs" />
+    <Compile Include="Migrations\201903170650327_PhoneAndMailSeparated.Designer.cs">
+      <DependentUpon>201903170650327_PhoneAndMailSeparated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903170652546_ValidationForEmailsAndPhones.cs" />
+    <Compile Include="Migrations\201903170652546_ValidationForEmailsAndPhones.Designer.cs">
+      <DependentUpon>201903170652546_ValidationForEmailsAndPhones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903170733041_AddedOrderToCounter.cs" />
+    <Compile Include="Migrations\201903170733041_AddedOrderToCounter.Designer.cs">
+      <DependentUpon>201903170733041_AddedOrderToCounter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903170734403_MadeOrderRequired.cs" />
+    <Compile Include="Migrations\201903170734403_MadeOrderRequired.Designer.cs">
+      <DependentUpon>201903170734403_MadeOrderRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903170949405_HideOptionAddedToQuestion.cs" />
+    <Compile Include="Migrations\201903170949405_HideOptionAddedToQuestion.Designer.cs">
+      <DependentUpon>201903170949405_HideOptionAddedToQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903170959173_HiddenBecameNotRequired.cs" />
+    <Compile Include="Migrations\201903170959173_HiddenBecameNotRequired.Designer.cs">
+      <DependentUpon>201903170959173_HiddenBecameNotRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903171013361_AddedButtonhrefToAbout.cs" />
+    <Compile Include="Migrations\201903171013361_AddedButtonhrefToAbout.Designer.cs">
+      <DependentUpon>201903171013361_AddedButtonhrefToAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903190833043_AddedIconToAboutCards.cs" />
+    <Compile Include="Migrations\201903190833043_AddedIconToAboutCards.Designer.cs">
+      <DependentUpon>201903190833043_AddedIconToAboutCards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903191100320_MadeAuthorName21.cs" />
+    <Compile Include="Migrations\201903191100320_MadeAuthorName21.Designer.cs">
+      <DependentUpon>201903191100320_MadeAuthorName21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AboutAdvantage.cs" />
+    <Compile Include="Models\AboutBody.cs" />
+    <Compile Include="Models\AboutCard.cs" />
+    <Compile Include="Models\AboutIntro.cs" />
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\CareCenter.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ContactInfo.cs" />
+    <Compile Include="Models\Counter.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\DepartmentCard.cs" />
+    <Compile Include="Models\DescCard.cs" />
+    <Compile Include="Models\Doctor.cs" />
+    <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\Feedback.cs" />
+    <Compile Include="Models\Number.cs" />
+    <Compile Include="Models\OpeningHour.cs" />
+    <Compile Include="Models\Phone.cs" />
+    <Compile Include="Models\PhoneView.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Slider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903131716219_Init.resx">
+      <DependentUpon>201903131716219_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903131807008_CounterFixed.resx">
+      <DependentUpon>201903131807008_CounterFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903131818243_DepartmentIconFixed.resx">
+      <DependentUpon>201903131818243_DepartmentIconFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903132005469_FeedbacksAdded.resx">
+      <DependentUpon>201903132005469_FeedbacksAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903132006246_FeedbackAdded.resx">
+      <DependentUpon>201903132006246_FeedbackAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903132008306_PhoneIconRemovedFromPhoneView.resx">
+      <DependentUpon>201903132008306_PhoneIconRemovedFromPhoneView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903132013499_AuthorAdded.resx">
+      <DependentUpon>201903132013499_AuthorAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903132017359_IconsFixed.resx">
+      <DependentUpon>201903132017359_IconsFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903132026423_IconRemovedFromContactInfo.resx">
+      <DependentUpon>201903132026423_IconRemovedFromContactInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903132028553_EmailRemovedFromContactInfo.resx">
+      <DependentUpon>201903132028553_EmailRemovedFromContactInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903132043302_Department.resx">
+      <DependentUpon>201903132043302_Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903132054371_SlugsAdded.resx">
+      <DependentUpon>201903132054371_SlugsAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903140656203_PhotoFixedInBlog.resx">
+      <DependentUpon>201903140656203_PhotoFixedInBlog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903141713130_PhotoUnrequiredInSlider.resx">
+      <DependentUpon>201903141713130_PhotoUnrequiredInSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903160628369_PhotosAndIconsFixed.resx">
+      <DependentUpon>201903160628369_PhotosAndIconsFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903161845270_LengthFixed.resx">
+      <DependentUpon>201903161845270_LengthFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903170650327_PhoneAndMailSeparated.resx">
+      <DependentUpon>201903170650327_PhoneAndMailSeparated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903170652546_ValidationForEmailsAndPhones.resx">
+      <DependentUpon>201903170652546_ValidationForEmailsAndPhones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903170733041_AddedOrderToCounter.resx">
+      <DependentUpon>201903170733041_AddedOrderToCounter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903170734403_MadeOrderRequired.resx">
+      <DependentUpon>201903170734403_MadeOrderRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903170949405_HideOptionAddedToQuestion.resx">
+      <DependentUpon>201903170949405_HideOptionAddedToQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903170959173_HiddenBecameNotRequired.resx">
+      <DependentUpon>201903170959173_HiddenBecameNotRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903171013361_AddedButtonhrefToAbout.resx">
+      <DependentUpon>201903171013361_AddedButtonhrefToAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903190833043_AddedIconToAboutCards.resx">
+      <DependentUpon>201903190833043_AddedIconToAboutCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903191100320_MadeAuthorName21.resx">
+      <DependentUpon>201903191100320_MadeAuthorName21.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60637</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60637/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
