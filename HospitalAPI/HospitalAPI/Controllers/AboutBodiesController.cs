@@ -20,22 +20,28 @@ namespace HospitalAPI.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: api/AboutBodies
-        public IHttpActionResult GetAboutBodies()
+        public List<AboutBody> GetAboutBodies()
         {
             string path = Url.Content("~/Uploads") + "/";
             // in this case, there is only one item to show. Just find it and return...
-            AboutBody ab = db.AboutBodies.FirstOrDefault();
-            if (ab == null)
+            List<AboutBody> abs = db.AboutBodies.ToList();
+            foreach (AboutBody item in abs)
             {
-                return NotFound();
+                item.Photo = path + item.Photo;
             }
-            else
-            {
+            return abs;
+            //AboutBody ab = db.AboutBodies.FirstOrDefault();
+            //if (ab == null)
+            //{
+            //    return NotFound();
+            //}
+            //else
+            //{
 
-                // before returning, add the path to the photo...
-                ab.Photo = path + ab.Photo;
-                return Ok(ab);
-            }
+            //    // before returning, add the path to the photo...
+            //    ab.Photo = path + ab.Photo;
+            //    return Ok(ab);
+            //}
         }
 
         // GET: api/AboutBodies/5

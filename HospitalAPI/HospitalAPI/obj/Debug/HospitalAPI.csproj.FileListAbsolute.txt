@@ -114,3 +114,8 @@ C:\Users\User\source\repos\HospitalAPI\HospitalAPI\bin\System.Web.Razor.xml
 C:\Users\User\source\repos\HospitalAPI\HospitalAPI\bin\System.Web.WebPages.xml
 C:\Users\User\source\repos\HospitalAPI\HospitalAPI\bin\System.Web.WebPages.Deployment.xml
 C:\Users\User\source\repos\HospitalAPI\HospitalAPI\bin\System.Web.WebPages.Razor.xml
+C:\Users\User\source\repos\HospitalAPI\HospitalAPI\bin\System.Web.Cors.dll
+C:\Users\User\source\repos\HospitalAPI\HospitalAPI\bin\System.Web.Http.Cors.dll
+C:\Users\User\source\repos\HospitalAPI\HospitalAPI\bin\System.Web.Http.Cors.xml
+C:\Users\User\source\repos\HospitalAPI\HospitalAPI\obj\Debug\HospitalAPI.Migrations.DescAddedToDoctor.resources
+C:\Users\User\source\repos\HospitalAPI\HospitalAPI\obj\Debug\HospitalAPI.Migrations.AddedDescToBlog.resources

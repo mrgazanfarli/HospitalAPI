@@ -18,9 +18,10 @@ namespace HospitalAPI.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: api/Counters
-        public IQueryable<Counter> GetCounters()
+        public List<Counter> GetCounters()
         {
-            return db.Counters;
+            List<Counter> counters = db.Counters.OrderBy(c => c.Order).ToList();
+            return counters;
         }
 
         // GET: api/Counters/5

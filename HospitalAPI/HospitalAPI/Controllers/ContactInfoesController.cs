@@ -18,22 +18,19 @@ namespace HospitalAPI.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: api/ContactInfoes
-        public IQueryable<ContactInfo> GetContactInfos()
+        [HttpGet]
+        [Route("api/contactinfo")]
+        public IHttpActionResult GetContactInfos()
         {
-            return db.ContactInfos;
-        }
-
-        // GET: api/ContactInfoes/5
-        [ResponseType(typeof(ContactInfo))]
-        public IHttpActionResult GetContactInfo(int id)
-        {
-            ContactInfo contactInfo = db.ContactInfos.Find(id);
-            if (contactInfo == null)
+            ContactInfo info = db.ContactInfos.FirstOrDefault();
+            if(info != null)
+            {
+                return Ok(info);
+            }
+            else
             {
                 return NotFound();
             }
-
-            return Ok(contactInfo);
         }
 
         // PUT: api/ContactInfoes/5

@@ -18,9 +18,9 @@ namespace HospitalAPI.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: api/AboutCards
-        public IQueryable<AboutCard> GetAboutCards()
+        public List<AboutCard> GetAboutCards()
         {
-            return db.AboutCards;
+            return db.AboutCards.ToList();
         }
 
         // GET: api/AboutCards/5

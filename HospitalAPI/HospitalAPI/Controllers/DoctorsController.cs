@@ -19,10 +19,11 @@ namespace HospitalAPI.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: api/Doctors
-        public List<Doctor> GetDoctors()
+        public List<Doctor> GetDoctors(int takeCount = 0)
         {
             string path = Url.Content("~/Uploads/doctors") + "/";
-            List<Doctor> doctors = db.Doctors.ToList();
+            int count = db.Doctors.Count();
+            List<Doctor> doctors = db.Doctors.OrderBy(d=>Guid.NewGuid()).Take(takeCount != 0 ? takeCount : count).ToList();
             foreach (Doctor item in doctors)
             {
                 item.Photo = path + item.Photo;

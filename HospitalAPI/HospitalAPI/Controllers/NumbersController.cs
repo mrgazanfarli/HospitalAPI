@@ -18,22 +18,17 @@ namespace HospitalAPI.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: api/Numbers
-        public IQueryable<Number> GetNumbers()
+        public object GetNumbers()
         {
-            return db.Numbers;
-        }
-
-        // GET: api/Numbers/5
-        [ResponseType(typeof(Number))]
-        public IHttpActionResult GetNumber(int id)
-        {
-            Number number = db.Numbers.Find(id);
-            if (number == null)
+            Number number = db.Numbers.FirstOrDefault();
+            if(number != null)
+            {
+                return number;
+            }
+            else
             {
                 return NotFound();
             }
-
-            return Ok(number);
         }
 
         // PUT: api/Numbers/5

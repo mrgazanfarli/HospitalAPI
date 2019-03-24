@@ -26,6 +26,9 @@ namespace HospitalAPI.Models
         [Column(TypeName = "ntext")]
         public string Text { get; set; }
 
+        [Required, MaxLength(110)]
+        public string Desc { get; set; }
+
         [MaxLength(500)]
         [Column(TypeName = "ntext")]
         public string SpecialText { get; set; }

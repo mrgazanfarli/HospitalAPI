@@ -21,7 +21,7 @@ namespace HospitalAPI.Controllers
         // GET: api/Blogs
         [HttpGet]
         [Route("api/blogs")]
-        public List<Blog> GetBlogs(int category = 0, int page = 0)
+        public IHttpActionResult GetBlogs(int category = 0, int page = 0)
         {
             // create a root path...
             string path = Url.Content("~/Uploads/blog") + "/";
@@ -31,15 +31,23 @@ namespace HospitalAPI.Controllers
             List<Blog> blogs = db.Blogs.Include("Category").Include("Author")
                                .Where(b => (category != 0 ? b.CategoryId == category : true)).OrderByDescending(b => b.Id)
                                .Skip(blogsToSkip).Take(8).ToList();
-            // add root path to the blog images...
-            foreach (Blog item in blogs)
-            {
-                item.SmallPhoto = path + item.SmallPhoto;
-                item.DetailsPhoto = path + item.DetailsPhoto;
-            }
-
-            // and then, return the blogs taken...
-            return blogs;
+            // return what is needed...
+            var blog = blogs.Select(b=>new {
+                SmallPhoto = path + b.SmallPhoto,
+                DetailsPhoto = path + b.DetailsPhoto,
+                Date = b.Date.ToString("dd MMM, yyyy"),
+                b.Title,
+                b.Slug,
+                b.Text,
+                b.SpecialText,
+                b.PostedBy,
+                Category =  b.Category.Name,
+                Author = new {
+                    b.Author.Name,
+                    Photo = path + b.Author.Photo
+                }
+            });
+            return Ok(blog);
         }
 
         // GET: api/Blogs/5
@@ -56,6 +64,31 @@ namespace HospitalAPI.Controllers
             blog.SmallPhoto = path + blog.SmallPhoto;
             blog.DetailsPhoto = path + blog.DetailsPhoto;
             return Ok(blog);
+        }
+
+        // blogs for news sliders...
+        [HttpGet]
+        [Route("api/getsliderblogs")]
+        public IHttpActionResult GetSliderBlogs(int count = 3)
+        {
+            string path = Url.Content("~/Uploads/blog") + "/";
+            // return what is needed for a slider...
+            var blogs = db.Blogs.Include("Author").Include("Category").OrderBy(b => Guid.NewGuid()).Take(count).Select(b => new
+            {
+                b.Slug,
+                b.Title,
+                Photo = path + b.SmallPhoto,
+                Author = new
+                {
+                    b.Author.Name,
+                    Photo = path + b.Author.Photo
+                },
+                Category = b.Category.Name,
+                Date = b.Date.ToString("dd MMM, yyyy"),
+                b.Desc
+            });
+
+            return Ok(blogs);
         }
 
         // PUT: api/Blogs/5

@@ -18,22 +18,15 @@ namespace HospitalAPI.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: api/CareCenters
-        public IQueryable<CareCenter> GetCareCenters()
+        public IHttpActionResult GetCareCenters()
         {
-            return db.CareCenters;
-        }
-
-        // GET: api/CareCenters/5
-        [ResponseType(typeof(CareCenter))]
-        public IHttpActionResult GetCareCenter(int id)
-        {
-            CareCenter careCenter = db.CareCenters.Find(id);
-            if (careCenter == null)
+            CareCenter careCenter = db.CareCenters.FirstOrDefault();
+            if(careCenter != null)
             {
-                return NotFound();
+                return Ok(careCenter);
             }
 
-            return Ok(careCenter);
+            return NotFound();
         }
 
         // PUT: api/CareCenters/5

@@ -31,6 +31,26 @@ namespace HospitalAPI.Controllers
             return departments;
         }
 
+        [HttpGet]
+        [Route("api/getdepartmentnames")]
+        public IHttpActionResult GetDepartmentNames()
+        {
+            var names = db.Departments.OrderBy(d => Guid.NewGuid()).Select(d => new
+            {
+                d.Name,
+                d.Slug
+            });
+
+            if (names != null)
+            {
+                return Ok(names);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
         // GET: api/Departments/5
         [ResponseType(typeof(Department))]
         public IHttpActionResult GetDepartment(string slug)
