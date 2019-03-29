@@ -50,20 +50,132 @@ namespace HospitalAPI.Controllers
             return Ok(blog);
         }
 
-        // GET: api/Blogs/5
-        [ResponseType(typeof(Blog))]
-        public IHttpActionResult GetBlog(string slug)
+        // blogs for blog-list view...
+        [HttpGet]
+        [Route("api/bloglist"), ActionName("GetBlogList")]
+        public IHttpActionResult GetBlogList(string category = "", int page = 0)
         {
             string path = Url.Content("~/Uploads/blog") + "/";
-            Blog blog = db.Blogs.FirstOrDefault(b => b.Slug == slug);
-            if (blog == null)
+
+            int categoryId;
+            if (string.IsNullOrEmpty(category))
+            {
+                categoryId = 0;
+            }
+            else
+            {
+                if(db.Categories.Any(c=>c.Name.ToLower() == category.ToLower()))
+                {
+                    categoryId = db.Categories.FirstOrDefault(c => c.Name == category).Id;
+                }
+                else
+                {
+                    categoryId = 0;
+                }
+            }
+
+            // determine the number of blogs to skip. Take 8 for each page...
+            int blogsToSkip = (page - 1) * 8;
+
+            if(blogsToSkip >= db.Blogs.Count())
             {
                 return NotFound();
             }
 
-            blog.SmallPhoto = path + blog.SmallPhoto;
-            blog.DetailsPhoto = path + blog.DetailsPhoto;
-            return Ok(blog);
+            // include both category and author of a blog...
+            List<Blog> blogs = db.Blogs.Include("Category").Include("Author")
+                               .Where(b => (categoryId != 0 ? b.CategoryId == categoryId : true)).OrderByDescending(b => b.Id)
+                               .Skip(blogsToSkip).Take(8).ToList();
+
+            int pageCount = Convert.ToInt32(Math.Ceiling(blogs.Count() / 8.0));
+
+            // return what is needed for view...
+            var data = blogs.Select(b => new
+            {
+                Photo = path + b.SmallPhoto,
+                b.Title,
+                b.Slug,
+                Author = new
+                {
+                    b.Author.Name,
+                    Photo = path + b.Author.Photo
+                },
+                Date = b.Date.ToString("dd MMM, yyyy"),
+                b.Desc,
+                Category = b.Category.Name,
+                PageCount = pageCount
+            });
+
+            return Ok(data);
+        }
+
+        // GET: api/Blogs/how-to-be-a-professional
+        [ResponseType(typeof(Blog))]
+        [Route("api/blogs/{slug}"), HttpGet, ActionName("OneBlog")]
+        public IHttpActionResult GetBlog(string slug)
+        {
+            string path = Url.Content("~/Uploads/blog") + "/";
+            Blog blog = db.Blogs.Include("Author").Include("Category").FirstOrDefault(b => b.Slug == slug);
+            List<Blog> blogs = db.Blogs.OrderByDescending(b => b.Date).ToList();
+            Blog nextBlog;
+            Blog prevBlog;
+            try
+            {
+                if((blogs.IndexOf(blog) + 1) < blogs.Count())
+                {
+                    nextBlog = blogs[blogs.IndexOf(blog) + 1];
+                }
+                else
+                {
+                    nextBlog = null;
+                }
+            }
+            catch (KeyNotFoundException)
+            {
+                nextBlog = null;
+            }
+            try
+            {
+                if((blogs.IndexOf(blog) - 1) >= 0)
+                {
+                    prevBlog = blogs[blogs.IndexOf(blog) - 1];
+                }
+                else
+                {
+                    prevBlog = null;
+                }
+            }
+            catch (KeyNotFoundException)
+            {
+                prevBlog = null;
+            }
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            var data = new
+            {
+                blog.Id,
+                Category = blog.Category.Name,
+                blog.Title,
+                blog.Text,
+                blog.SpecialText,
+                blog.PostedBy,
+                Author = new
+                {
+                    blog.Author.Name,
+                    Photo = path + blog.Author.Photo
+                },
+                blog.Slug,
+                SmallPhoto = path + blog.SmallPhoto,
+                DetailsPhoto = path + blog.DetailsPhoto,
+                blog.Desc,
+                DateDay = blog.Date.ToString("dd"),
+                DateMonth = blog.Date.ToString("MMM"),
+                NextSlug = nextBlog?.Slug,
+                PrevSlug = prevBlog?.Slug
+            };
+            return Ok(data);
         }
 
         // blogs for news sliders...
@@ -73,7 +185,8 @@ namespace HospitalAPI.Controllers
         {
             string path = Url.Content("~/Uploads/blog") + "/";
             // return what is needed for a slider...
-            var blogs = db.Blogs.Include("Author").Include("Category").OrderBy(b => Guid.NewGuid()).Take(count).Select(b => new
+            List<Blog> blogs = db.Blogs.Include("Author").Include("Category").OrderBy(b => Guid.NewGuid()).Take(count).ToList();
+            var data = blogs.Select(b => new
             {
                 b.Slug,
                 b.Title,
@@ -88,7 +201,7 @@ namespace HospitalAPI.Controllers
                 b.Desc
             });
 
-            return Ok(blogs);
+            return Ok(data);
         }
 
         // PUT: api/Blogs/5
@@ -289,6 +402,14 @@ namespace HospitalAPI.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("PostBlog", new { id = blog.Id }, blog);
+        }
+
+        [HttpGet]
+        [Route("api/pagenumber")]
+        public IHttpActionResult GetPageDetails()
+        {
+            int PageCount = Convert.ToInt32(Math.Ceiling(db.Blogs.Count()/8.0));
+            return Ok(PageCount);
         }
 
         // DELETE: api/Blogs/5

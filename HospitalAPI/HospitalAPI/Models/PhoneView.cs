@@ -15,5 +15,8 @@ namespace HospitalAPI.Models
 
         [Required, MaxLength(125)]
         public string Text { get; set; }
+
+        [Required, MaxLength(20)]
+        public string Number { get; set; }
     }
 }

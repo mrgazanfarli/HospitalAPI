@@ -119,3 +119,4 @@ C:\Users\User\source\repos\HospitalAPI\HospitalAPI\bin\System.Web.Http.Cors.dll
 C:\Users\User\source\repos\HospitalAPI\HospitalAPI\bin\System.Web.Http.Cors.xml
 C:\Users\User\source\repos\HospitalAPI\HospitalAPI\obj\Debug\HospitalAPI.Migrations.DescAddedToDoctor.resources
 C:\Users\User\source\repos\HospitalAPI\HospitalAPI\obj\Debug\HospitalAPI.Migrations.AddedDescToBlog.resources
+C:\Users\User\source\repos\HospitalAPI\HospitalAPI\obj\Debug\HospitalAPI.Migrations.AddedPhoneToView.resources

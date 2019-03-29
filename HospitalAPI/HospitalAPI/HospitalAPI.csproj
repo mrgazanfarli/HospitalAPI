@@ -178,6 +178,7 @@
     <Content Include="Uploads\blog\blog-1-large.jpg" />
     <Content Include="Uploads\blog\blog-1-small.jpg" />
     <Content Include="Uploads\client.jpg" />
+    <Content Include="Uploads\department\1.jpg" />
     <Content Include="Uploads\department\department-img1.jpg" />
     <Content Include="Uploads\doctor.png" />
     <Content Include="Uploads\doctors\1-large.jpg" />
@@ -189,22 +190,22 @@
     <Content Include="Uploads\favicon.png" />
     <Content Include="Uploads\logo.png" />
     <Content Include="Uploads\newsletter-bg.jpg" />
-    <Content Include="Uploads\news\1.jpg" />
-    <Content Include="Uploads\news\2.jpg" />
-    <Content Include="Uploads\news\3.jpg" />
-    <Content Include="Uploads\news\4.jpg" />
-    <Content Include="Uploads\news\5.jpg" />
-    <Content Include="Uploads\news\latest-post1.jpg" />
-    <Content Include="Uploads\news\latest-post2.jpg" />
-    <Content Include="Uploads\news\latest-post3.jpg" />
+    <Content Include="Uploads\blog\1.jpg" />
+    <Content Include="Uploads\blog\2.jpg" />
+    <Content Include="Uploads\blog\3.jpg" />
+    <Content Include="Uploads\blog\4.jpg" />
+    <Content Include="Uploads\blog\5.jpg" />
+    <Content Include="Uploads\blog\latest-post1.jpg" />
+    <Content Include="Uploads\blog\latest-post2.jpg" />
+    <Content Include="Uploads\blog\latest-post3.jpg" />
     <Content Include="Uploads\patientAndAuthor\1.jpg" />
     <Content Include="Uploads\patientAndAuthor\2.jpg" />
     <Content Include="Uploads\patientAndAuthor\3.jpg" />
     <Content Include="Uploads\patientAndAuthor\4.jpg" />
     <Content Include="Uploads\patientAndAuthor\5.jpg" />
-    <Content Include="Uploads\services\1.jpg" />
-    <Content Include="Uploads\services\2.jpg" />
-    <Content Include="Uploads\services\3.jpg" />
+    <Content Include="Uploads\1.jpg" />
+    <Content Include="Uploads\2.jpg" />
+    <Content Include="Uploads\3.jpg" />
     <Content Include="Uploads\slider\1.jpg" />
     <Content Include="Uploads\slider\2.jpg" />
     <Content Include="Uploads\slider\3.jpg" />
@@ -348,6 +349,10 @@
     <Compile Include="Migrations\201903241742394_AddedDescToBlog.Designer.cs">
       <DependentUpon>201903241742394_AddedDescToBlog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903241817443_AddedPhoneToView.cs" />
+    <Compile Include="Migrations\201903241817443_AddedPhoneToView.Designer.cs">
+      <DependentUpon>201903241817443_AddedPhoneToView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutAdvantage.cs" />
     <Compile Include="Models\AboutBody.cs" />
@@ -478,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903241742394_AddedDescToBlog.resx">
       <DependentUpon>201903241742394_AddedDescToBlog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903241817443_AddedPhoneToView.resx">
+      <DependentUpon>201903241817443_AddedPhoneToView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

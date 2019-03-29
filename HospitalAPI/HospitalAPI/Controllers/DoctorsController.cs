@@ -19,6 +19,7 @@ namespace HospitalAPI.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: api/Doctors
+        [Route("api/doctors")]
         public List<Doctor> GetDoctors(int takeCount = 0)
         {
             string path = Url.Content("~/Uploads/doctors") + "/";
@@ -32,11 +33,12 @@ namespace HospitalAPI.Controllers
             return doctors;
         }
 
-        // GET: api/Doctors/5
+        // GET: api/Doctors/doctor-name
         [ResponseType(typeof(Doctor))]
+        [Route("api/doctor/{*slug}")]
         public IHttpActionResult GetDoctor(string slug)
         {
-            string path = Url.Content("~/Uploads/department") + "/";
+            string path = Url.Content("~/Uploads/doctors") + "/";
             Doctor doctor = db.Doctors.FirstOrDefault(d => d.Slug == slug);
             if (doctor == null)
             {
@@ -45,6 +47,26 @@ namespace HospitalAPI.Controllers
 
             doctor.Photo = path + doctor.Photo;
             return Ok(doctor);
+        }
+
+        [HttpGet]
+        [Route("api/doctornames")]
+        public IHttpActionResult GetDoctorNames()
+        {
+            List<Doctor> doctors = db.Doctors.OrderBy(d => Guid.NewGuid()).ToList();
+            var data = doctors.Select(d => new
+            {
+                d.Slug,
+                d.Fullname
+            });
+            if (doctors != null)
+            {
+                return Ok(data);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         // PUT: api/Doctors/5

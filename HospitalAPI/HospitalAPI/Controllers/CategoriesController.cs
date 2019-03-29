@@ -36,6 +36,15 @@ namespace HospitalAPI.Controllers
             return Ok(category);
         }
 
+        // get categories which has at least one blog...
+        [HttpGet]
+        [Route("api/activecategories")]
+        public IHttpActionResult GetActiveCategories()
+        {
+            List<Category> categories = db.Categories.Where(c => c.Blogs.Count() != 0).ToList();
+            return Ok(categories);
+        }
+
         // PUT: api/Categories/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCategory(int id, Category category)

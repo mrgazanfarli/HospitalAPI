@@ -32,13 +32,13 @@ namespace HospitalAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/getdepartmentnames")]
+        [Route("api/departmentnames"), ActionName("GetDepartmentNames")]
         public IHttpActionResult GetDepartmentNames()
         {
             var names = db.Departments.OrderBy(d => Guid.NewGuid()).Select(d => new
             {
-                d.Name,
-                d.Slug
+                d.Slug,
+                d.Name
             });
 
             if (names != null)
@@ -51,8 +51,10 @@ namespace HospitalAPI.Controllers
             }
         }
 
-        // GET: api/Departments/5
+        // GET: api/Departments/stomatology
         [ResponseType(typeof(Department))]
+        [HttpGet]
+        [Route("api/department/{*slug}"), ActionName("GetDepartmentDetails")]
         public IHttpActionResult GetDepartment(string slug)
         {
             string path = Url.Content("~/Uploads/department") + "/";

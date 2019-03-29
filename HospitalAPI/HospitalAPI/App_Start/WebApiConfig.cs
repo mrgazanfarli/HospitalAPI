@@ -10,8 +10,6 @@ namespace HospitalAPI
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-            // Web API routes
             config.EnableCors();
 
             config.MapHttpAttributeRoutes();
@@ -22,8 +20,26 @@ namespace HospitalAPI
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Routes.MapHttpRoute(
+                name: "OneBlog",
+                routeTemplate: "api/blogs/{slug}",
+                defaults: new { slug = RouteParameter.Optional }
+            );
+            config.Routes.MapHttpRoute(
                 name: "PostBlog",
                 routeTemplate: "api/blogs"
+                );
+            config.Routes.MapHttpRoute(
+                name: "GetBlogList",
+                routeTemplate: "api/bloglist"
+                );
+            config.Routes.MapHttpRoute(
+                name: "GetDepartmentNames",
+                routeTemplate: "api/departmentnames"
+                );
+            config.Routes.MapHttpRoute(
+                name: "GetDepartmentDetails",
+                routeTemplate: "api/department/{*slug}",
+                defaults: new { controller = "Departments", action = "GetDepartment", slug = RouteParameter.Optional }
                 );
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
